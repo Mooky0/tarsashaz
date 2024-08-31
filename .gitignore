@@ -39,3 +39,6 @@ htmlcov/
 # Dependency directories
 venv/
 node_modules/
+
+# helper files
+data_fix.py

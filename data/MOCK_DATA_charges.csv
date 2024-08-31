@@ -1,101 +1,101 @@
-charge_id,description,amount,due_date,unit_id
-1,Multiple nb/sb-nonhosp,1594,2/15/2025,49
-2,Psychogenic GI disease,2315,2/1/2025,15
-3,Elder primigravid-antepa,5428,3/7/2025,64
-4,Viral dis contact NEC,8744,1/27/2025,91
-5,Abn ftl hrt rate/rhy-del,8937,1/20/2025,87
-6,Acq total absnc pancreas,5458,2/2/2025,17
-7,Arthropathy NEC-ankle,8536,1/13/2025,92
-8,Anomalies of uterus NEC,7483,1/8/2025,68
-9,Vitreoretinal dystrophy,7746,3/1/2025,78
-10,Fem genital mutilate NEC,8474,2/27/2025,100
-11,Nongc urth oth spf orgsm,6257,3/17/2025,16
-12,Squam cell ca skin trunk,9539,1/8/2025,74
+charge_id,description,amount,due_date,tenant_id
+2,Psychogenic GI disease,2315,2/1/2025,1
+1,Multiple nb/sb-nonhosp,1594,2/15/2025,4
+3,Elder primigravid-antepa,5428,3/7/2025,6
+4,Viral dis contact NEC,8744,1/27/2025,9
+5,Abn ftl hrt rate/rhy-del,8937,1/20/2025,8
+6,Acq total absnc pancreas,5458,2/2/2025,1
+7,Arthropathy NEC-ankle,8536,1/13/2025,9
+8,Anomalies of uterus NEC,7483,1/8/2025,6
+9,Vitreoretinal dystrophy,7746,3/1/2025,7
+10,Fem genital mutilate NEC,8474,2/27/2025,10
+11,Nongc urth oth spf orgsm,6257,3/17/2025,1
+12,Squam cell ca skin trunk,9539,1/8/2025,7
 13,Desensitiza to allergens,7596,2/21/2025,1
 14,Mal neo labia minora,6187,2/25/2025,7
-15,Martial arts,7039,3/17/2025,87
-16,Local traumatic opacity,1076,2/10/2025,49
-17,Neonatal conjunctivitis,3423,2/15/2025,22
+15,Martial arts,7039,3/17/2025,8
+16,Local traumatic opacity,1076,2/10/2025,4
+17,Neonatal conjunctivitis,3423,2/15/2025,2
 18,Injury hepatic artery,3699,2/10/2025,6
-19,"Hx retained FB, rem",7769,1/26/2025,59
-20,Meningococcemia,9311,1/3/2025,52
-21,Uter dystocia NOS-unspec,8158,3/22/2025,90
-22,Sweat gland disorder NOS,9517,3/12/2025,64
-23,Disloc 1st cerv vert-cl,3114,2/21/2025,95
-24,Transient visual loss,5904,1/18/2025,52
-25,Ankylosis-unspec,1633,2/27/2025,97
-26,Late effect arm fx,6713,1/28/2025,33
-27,Contusion leg NOS,1314,3/9/2025,54
-28,Echinococcosis NOS liver,6614,3/17/2025,66
-29,Mal neo mouth floor NOS,5694,3/7/2025,66
-30,Oth specf viral infectn,6330,3/22/2025,62
-31,Spinal disorders NEC,5026,3/13/2025,55
-32,Ret cholelh fol cholecys,5549,2/5/2025,32
-33,Hx-analgesic allergy,7448,3/25/2025,23
-34,Anxiety disorder oth dis,6323,3/15/2025,19
-35,Mal neo cerebral mening,4119,3/30/2025,78
-36,Anaplastic lymph head,5061,3/24/2025,63
-37,Atten to tracheostomy,5339,3/26/2025,27
-38,Hx-penicillin allergy,9950,2/8/2025,32
-39,Cl skul base fx-mod coma,2928,1/6/2025,44
-40,Abdmnal mass rt lwr quad,7677,3/29/2025,48
+19,"Hx retained FB, rem",7769,1/26/2025,5
+20,Meningococcemia,9311,1/3/2025,5
+21,Uter dystocia NOS-unspec,8158,3/22/2025,9
+22,Sweat gland disorder NOS,9517,3/12/2025,6
+23,Disloc 1st cerv vert-cl,3114,2/21/2025,9
+24,Transient visual loss,5904,1/18/2025,5
+25,Ankylosis-unspec,1633,2/27/2025,9
+26,Late effect arm fx,6713,1/28/2025,3
+27,Contusion leg NOS,1314,3/9/2025,5
+28,Echinococcosis NOS liver,6614,3/17/2025,6
+29,Mal neo mouth floor NOS,5694,3/7/2025,6
+30,Oth specf viral infectn,6330,3/22/2025,6
+31,Spinal disorders NEC,5026,3/13/2025,5
+32,Ret cholelh fol cholecys,5549,2/5/2025,3
+33,Hx-analgesic allergy,7448,3/25/2025,2
+34,Anxiety disorder oth dis,6323,3/15/2025,1
+35,Mal neo cerebral mening,4119,3/30/2025,7
+36,Anaplastic lymph head,5061,3/24/2025,6
+37,Atten to tracheostomy,5339,3/26/2025,2
+38,Hx-penicillin allergy,9950,2/8/2025,3
+39,Cl skul base fx-mod coma,2928,1/6/2025,4
+40,Abdmnal mass rt lwr quad,7677,3/29/2025,4
 41,Coccidiosis,8303,2/2/2025,8
-42,Echinococc granul lung,8191,2/3/2025,28
-43,Benign neoplasm vagina,1875,2/17/2025,85
-44,Syphilitic iridocyclitis,9611,3/19/2025,30
-45,Equatorial staphyloma,1534,2/11/2025,74
-46,Infect NOS-postpartum,4496,3/18/2025,71
-47,Sublingual varices,2877,3/5/2025,78
-48,Margin zone lym pelvic,9178,2/4/2025,44
+42,Echinococc granul lung,8191,2/3/2025,2
+43,Benign neoplasm vagina,1875,2/17/2025,8
+44,Syphilitic iridocyclitis,9611,3/19/2025,3
+45,Equatorial staphyloma,1534,2/11/2025,7
+46,Infect NOS-postpartum,4496,3/18/2025,7
+47,Sublingual varices,2877,3/5/2025,7
+48,Margin zone lym pelvic,9178,2/4/2025,4
 49,Tox multnod goit no cris,9023,3/8/2025,5
-50,Arthropathy NEC-up/arm,9970,2/27/2025,24
-51,Menstl mgr wo ntrc w st,4382,3/2/2025,15
-52,Cong cystic liver dis,8950,2/27/2025,34
-53,Burn of esophagus,7763,3/14/2025,52
-54,Mixed acid-base bal dis,9125,3/5/2025,62
-55,Aftercare path fx up arm,3359,2/9/2025,10
-56,Congen syph meningitis,3153,1/18/2025,25
-57,Prostatic inflam dis NEC,8554,2/5/2025,75
+50,Arthropathy NEC-up/arm,9970,2/27/2025,2
+51,Menstl mgr wo ntrc w st,4382,3/2/2025,1
+52,Cong cystic liver dis,8950,2/27/2025,3
+53,Burn of esophagus,7763,3/14/2025,5
+54,Mixed acid-base bal dis,9125,3/5/2025,6
+55,Aftercare path fx up arm,3359,2/9/2025,1
+56,Congen syph meningitis,3153,1/18/2025,2
+57,Prostatic inflam dis NEC,8554,2/5/2025,7
 58,Maxillary asymmetry,5289,2/11/2025,3
-59,Pneum in infect dis NEC,4503,1/2/2025,57
-60,Drug depend NOS-remiss,3469,3/22/2025,25
-61,Sweating fever,3520,1/2/2025,99
-62,Venezuelan equine fever,2837,3/14/2025,15
-63,Acute HTR NOS,6518,1/20/2025,76
-64,Chemotherapy convalescen,5638,3/10/2025,90
-65,TB pneumonia-unspec,6994,3/15/2025,38
+59,Pneum in infect dis NEC,4503,1/2/2025,5
+60,Drug depend NOS-remiss,3469,3/22/2025,2
+61,Sweating fever,3520,1/2/2025,9
+62,Venezuelan equine fever,2837,3/14/2025,1
+63,Acute HTR NOS,6518,1/20/2025,7
+64,Chemotherapy convalescen,5638,3/10/2025,9
+65,TB pneumonia-unspec,6994,3/15/2025,3
 66,Acute post-thoracot pain,1971,3/19/2025,3
-67,Papillary muscle rupture,2905,1/13/2025,99
-68,Anomalies of lens shape,4515,3/10/2025,22
+67,Papillary muscle rupture,2905,1/13/2025,9
+68,Anomalies of lens shape,4515,3/10/2025,2
 69,Fetal comp in utero-ante,9874,1/11/2025,8
-70,Mech prob w internal org,9051,3/19/2025,22
-71,Poison-antirheumatic NEC,2754,3/8/2025,46
-72,Disrup internal op wound,9213,3/10/2025,48
-73,Oral soft tissue dis NEC,6243,2/13/2025,28
-74,Chondrocalcin NOS-l/leg,6563,1/16/2025,29
-75,Abn react-artif implant,3322,3/9/2025,57
-76,Acc pois-utl gas NEC/NOS,9053,2/19/2025,100
-77,Joint effusion-pelvis,8810,3/9/2025,60
-78,Synov/tend/bursa dis NOS,6988,1/24/2025,42
+70,Mech prob w internal org,9051,3/19/2025,2
+71,Poison-antirheumatic NEC,2754,3/8/2025,4
+72,Disrup internal op wound,9213,3/10/2025,4
+73,Oral soft tissue dis NEC,6243,2/13/2025,2
+74,Chondrocalcin NOS-l/leg,6563,1/16/2025,2
+75,Abn react-artif implant,3322,3/9/2025,5
+76,Acc pois-utl gas NEC/NOS,9053,2/19/2025,10
+77,Joint effusion-pelvis,8810,3/9/2025,6
+78,Synov/tend/bursa dis NOS,6988,1/24/2025,4
 79,Adv eff antmycob antbiot,7963,2/17/2025,9
-80,3rd deg burn mult finger,5204,3/11/2025,53
-81,Ulcerative proctitis,7051,2/22/2025,12
-82,Brain inj NEC-brief coma,6823,1/25/2025,62
-83,NB hypothermia NEC,6569,1/2/2025,49
+80,3rd deg burn mult finger,5204,3/11/2025,5
+81,Ulcerative proctitis,7051,2/22/2025,1
+82,Brain inj NEC-brief coma,6823,1/25/2025,6
+83,NB hypothermia NEC,6569,1/2/2025,4
 84,Home remote from hospitl,8651,3/16/2025,1
-85,"Chron periodontitis,gen",6236,3/14/2025,66
-86,Outlet contract-antepart,8987,1/3/2025,68
-87,Pulmonary anthrax,9243,2/27/2025,12
-88,Vaccin for common cold,7439,3/16/2025,24
-89,80-89% bdy brn/30-39% 3d,4522,2/28/2025,65
-90,Intracranial abscess,3268,3/19/2025,83
-91,TB of kidney-histo dx,8374,3/7/2025,35
-92,Unsocial aggress-unspec,2204,2/3/2025,77
-93,Cong abn uter preg-unsp,4088,3/29/2025,100
-94,Meningococc optic neurit,4191,1/3/2025,81
-95,Alt exotropia w a pattrn,5169,1/21/2025,50
-96,Traumatic cataract NOS,7573,3/17/2025,77
-97,Delay p/part hem-postpar,6014,1/28/2025,28
+85,"Chron periodontitis,gen",6236,3/14/2025,6
+86,Outlet contract-antepart,8987,1/3/2025,6
+87,Pulmonary anthrax,9243,2/27/2025,1
+88,Vaccin for common cold,7439,3/16/2025,2
+89,80-89% bdy brn/30-39% 3d,4522,2/28/2025,6
+90,Intracranial abscess,3268,3/19/2025,8
+91,TB of kidney-histo dx,8374,3/7/2025,3
+92,Unsocial aggress-unspec,2204,2/3/2025,7
+93,Cong abn uter preg-unsp,4088,3/29/2025,10
+94,Meningococc optic neurit,4191,1/3/2025,8
+95,Alt exotropia w a pattrn,5169,1/21/2025,5
+96,Traumatic cataract NOS,7573,3/17/2025,7
+97,Delay p/part hem-postpar,6014,1/28/2025,2
 98,Hypocalcemia,3536,1/23/2025,4
-99,Trigeminal nerve dis NEC,5727,3/24/2025,58
-100,"Retinoph prematr,stage 1",6023,3/2/2025,79
+99,Trigeminal nerve dis NEC,5727,3/24/2025,5
+100,"Retinoph prematr,stage 1",6023,3/2/2025,7
