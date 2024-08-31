@@ -1,0 +1,37 @@
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+
+# Static files
+/staticfiles/
+/static/
+
+# Media files
+/media/
+
+# Database
+*.sqlite3
+
+# Virtual environment
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Testing
+.coverage
+htmlcov/
+
+# Dependency directories
+venv/
+node_modules/
