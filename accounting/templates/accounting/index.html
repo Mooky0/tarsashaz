@@ -1,9 +1,35 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}{{ section.title }}{% endblock %}
 
 {% block content %}
 
-<h1>Hello, world. You're at the accounting index.</h1>
-    
+<h1><b>Dashboard</b></h1>
+
+
+<div class="balance-card">
+    <div class="balance-header">
+        <span>Total Balance</span>
+        <!-- <span class="percentage-change">
+            <i class="icon-arrow-up"></i> 2.36%
+        </span> -->
+    </div>
+    <div class="balance-amount">
+        {{ total_balance }} Ft
+    </div>
+    <div class="income-expense">
+        <div class="income">
+            <span>Income</span>
+            <strong>{{ income }} Ft </strong>
+        </div>
+        <div class="divider"></div>
+        <div class="expense">
+            <span>Expense</span>
+            <strong>{{ expense }} Ft</strong>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

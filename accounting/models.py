@@ -19,7 +19,7 @@ class Charge(models.Model):
     tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE, related_name='charges')
 
     def __str__(self):
-        return f'Charge {self.description} for {self.unit.unit_number}'
+        return f'Charge {self.description} for {self.tenant.tenant_name}'
 
 
 class Payment(models.Model):
@@ -29,7 +29,7 @@ class Payment(models.Model):
     charge = models.ForeignKey(Charge, on_delete=models.CASCADE, related_name='payments')
 
     def __str__(self):
-        return f'Payment of {self.amount_paid} for {self.unit.unit_number}'
+        return f'Payment of {self.amount_paid} for {self.charge.tenant.tenant_name}'
 
 
 class Expense(models.Model):
