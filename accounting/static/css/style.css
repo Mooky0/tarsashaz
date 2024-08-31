@@ -105,3 +105,48 @@ footer {
     height: 30px;
     margin: auto 10px;
 }
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.transaction-item:last-child {
+  border-bottom: none;
+}
+.transaction-item .icon {
+  background-color: #eee;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+.transaction-item .details {
+  flex-grow: 1;
+}
+.transaction-item .amount {
+  font-weight: bold;
+  color: #333;
+}
+.transaction-item.income .amount {
+  color: #28a745;
+}
+.transaction-item.expense .amount {
+  color: #dc3545;
+}
+.transaction-item.highlight {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+.filters a {
+  margin-right: 15px;
+  cursor: pointer;
+}
+.filters a.active {
+  font-weight: bold;
+  color: #000;
+}
