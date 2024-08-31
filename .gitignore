@@ -14,6 +14,10 @@ local_settings.py
 
 # Database
 *.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm
+
 
 # Virtual environment
 venv/
