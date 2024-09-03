@@ -9,18 +9,23 @@ from django.db.models import Sum
 def index(request):
     template = loader.get_template('accounting/index.html')
     
-    expanses = Expense.objects.aggregate(total=Sum('amount'))['total']
+    expanses_total = Expense.objects.aggregate(total=Sum('amount'))['total']
     
     payments = Payment.objects.aggregate(total=Sum('amount_paid'))['total']
     
-    balance = payments - expanses
+    balance = payments - expanses_total
+    
+    expenses = Expense.objects.all()
     
     
     context = {
         'total_balance' : "{:,.2f}".format(balance),
         'income' : "{:,.2f}".format(payments),
-        'expense' : "{:,.2f}".format(expanses),
+        'expense' : "{:,.2f}".format(expanses_total),
+        'expenses' : expenses,
     }
+    for expense in expenses:
+        print(expense)
     return HttpResponse(template.render(context, request))
     
     

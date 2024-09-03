@@ -47,71 +47,20 @@
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="container mt-5 balance-card">
-    <div class="d-flex justify-content-between align-items-center">
-        <h3>Expenses</h3>
-        <a href="#" class="text-muted">View all</a>
-    </div>
-
-    <div class="transaction-list">
-        <div class="transaction-item expense">
-            <div class="icon">
-                <i class="bi bi-shop"></i>
+    <div class="row">
+        <div class="container mt-5 balance-card">
+            <div class="d-flex justify-content-between align-items-center">
+                <h3>Expenses</h3>
             </div>
-            <div class="details">
-                <div>Central Burger</div>
-                <small class="text-muted">Cafe and Restaurant</small>
-            </div>
-            <div class="amount">-$189.36</div>
-        </div>
-
-        <div class="transaction-item expense">
-            <div class="icon">
-                <i class="bi bi-basket"></i>
-            </div>
-            <div class="details">
-                <div>The Market</div>
-                <small class="text-muted">Groceries</small>
-            </div>
-            <div class="amount">-$92.50</div>
-        </div>
-
-        <div class="transaction-item income highlight">
-            <div class="icon">
-                <i class="bi bi-arrow-up-right-circle"></i>
-            </div>
-            <div class="details">
-                <div>Quick Transfer</div>
-                <small class="text-muted">Maria Purple</small>
-            </div>
-            <div class="amount">+$350.00</div>
-        </div>
-
-        <div class="transaction-item expense">
-            <div class="icon">
-                <i class="bi bi-basket"></i>
-            </div>
-            <div class="details">
-                <div>The Market</div>
-                <small class="text-muted">Groceries</small>
-            </div>
-            <div class="amount">-$36.20</div>
-        </div>
-
-        <div class="transaction-item expense">
-            <div class="icon">
-                <i class="bi bi-shop"></i>
-            </div>
-            <div class="details">
-                <div>Central Burger</div>
-                <small class="text-muted">Cafe and Restaurant</small>
-            </div>
-            <div class="amount">-$189.36</div>
+        
+            {% include 'partials/expense_block.html' %}
+            
+            
         </div>
     </div>
 </div>
+
+
+
 
 {% endblock %}
