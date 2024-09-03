@@ -8,26 +8,43 @@
 
 <h1><b>Dashboard</b></h1>
 
-
-<div class="balance-card">
-    <div class="balance-header">
-        <span>Total Balance</span>
-        <!-- <span class="percentage-change">
-            <i class="icon-arrow-up"></i> 2.36%
-        </span> -->
-    </div>
-    <div class="balance-amount">
-        {{ total_balance }} Ft
-    </div>
-    <div class="income-expense">
-        <div class="income">
-            <span>Income</span>
-            <strong>{{ income }} Ft </strong>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="container mt-5">
+                <div class="card shadow-sm" style="border-radius: 8px;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-uppercase text-muted mb-2">Balance</h6>
+                        </div>
+                        <h3 class="font-weight-bold">{{ total_balance }} Ft</h3>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="divider"></div>
-        <div class="expense">
-            <span>Expense</span>
-            <strong>{{ expense }} Ft</strong>
+        <div class="col">
+            <div class="container mt-5">
+                <div class="card shadow-sm" style="border-radius: 8px;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-uppercase text-muted mb-2">Income</h6>
+                        </div>
+                        <h3 class="font-weight-bold">{{ income }} Ft</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="container mt-5">
+                <div class="card shadow-sm" style="border-radius: 8px;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="text-uppercase text-muted mb-2">Expense</h6>
+                        </div>
+                        <h3 class="font-weight-bold">{{ expense }} Ft</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -35,13 +52,8 @@
 
 <div class="container mt-5 balance-card">
     <div class="d-flex justify-content-between align-items-center">
-        <h3>Transactions</h3>
+        <h3>Expenses</h3>
         <a href="#" class="text-muted">View all</a>
-    </div>
-    <div class="filters mb-4">
-        <a href="#" class="active">All</a>
-        <a href="#">Expenses</a>
-        <a href="#">Income</a>
     </div>
 
     <div class="transaction-list">
