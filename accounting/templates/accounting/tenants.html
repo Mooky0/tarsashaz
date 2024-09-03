@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}{{ section.title }}{% endblock %}
+
+{% block content %}
+
+<h1><b>Lakosok</b></h1>
+
+<div class="container mt-5">
+    <label for="tenantDropdown" class="form-label">Select Tenant:</label>
+    <div class="input-group mb-3">
+        <select id="tenantDropdown" name="tenant" class="form-select">
+            <option value="" selected disabled>Choose a tenant</option>
+            {% for tenant in tenants %}
+                <option value="{{ tenant.id }}">{{ tenant.tenant_name }} - Apt {{ tenant.unit_number }} ( {{ tenant.id }} )</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-primary" 
+                hx-get="{% url 'tenants_payment_filter' %}" 
+                hx-target="#transactionTable" 
+                hx-include="#tenantDropdown">
+            Filter
+        </button>
+    </div>
+
+    <!-- Table where transactions will be displayed -->
+    <div id="transactionTable">
+        {% include 'partials/tenant_payments.html' %}
+    </div>
+</div>
+
+{% endblock %}

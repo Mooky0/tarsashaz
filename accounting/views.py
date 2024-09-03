@@ -1,5 +1,6 @@
 import django.template.loader as loader
 from django.http import HttpResponse
+from django.shortcuts import render
 
 from .models import Charge, Payment, Expense, Tenant
 from django.db.models import Sum
@@ -21,6 +22,26 @@ def index(request):
         'expense' : "{:,.2f}".format(expanses),
     }
     return HttpResponse(template.render(context, request))
+    
+    
+def tenants(request):
+    template = loader.get_template('accounting/tenants.html')
+    tenants = Tenant.objects.all()
+    
+    context = {
+        'tenants' : tenants,
+    }
+    
+    return HttpResponse(template.render(context, request))
+    
+    
+def tenants_payment_filter(request):
+    tenants = Tenant.objects.all()
+    payments = None
+    tenant_id = request.GET.get('tenant')
+    charges = Charge.objects.filter(tenant_id=tenant_id).order_by('amount')
+    return render(request, 'partials/tenant_payments.html', {'charges': charges})
+
     
 def home(request):
     return HttpResponse('Home page')
