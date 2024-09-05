@@ -1,7 +1,7 @@
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th>Date</th>
+            <th>Description</th>
             <th>Amount</th>
             <th>Status</th>
             <th>Due Date</th>
@@ -11,7 +11,7 @@
         {% if charges %}
             {% for charge in charges %}
                 <tr>
-                    <td>{{ charge.due_date }}</td>
+                    <td>{{ charge.description }}</td>
                     <td>{{ charge.amount }}</td>
                     <td>
                         {% if charge.status == "0" %}

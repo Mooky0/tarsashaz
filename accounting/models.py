@@ -11,7 +11,7 @@ class Tenant(models.Model):
     tenant_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     phone_number = models.CharField(max_length=20)
-    type = models.CharField(max_length=20, choices=Role.choices, default=Role.TENANT)
+    role = models.CharField(max_length=20, choices=Role.choices, default=Role.TENANT)
 
     def __str__(self):
         return f'{self.unit_number} - {self.tenant_name}'

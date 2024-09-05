@@ -1,34 +1,41 @@
 {% extends "base.html" %}
 
 {% load static %}
-
-{% block title %}{{ section.title }}{% endblock %}
+{% block title %}Tenants{% endblock %}
 
 {% block content %}
 
-<h1><b>Lakosok</b></h1>
+<h1><b>Tenants</b></h1>
 
-<div class="container mt-5">
-    <label for="tenantDropdown" class="form-label">Select Tenant:</label>
-    <div class="input-group mb-3">
-        <select id="tenantDropdown" name="tenant" class="form-select">
-            <option value="" selected disabled>Choose a tenant</option>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Apartments</th>
+            <th>Role</th>
+            <th>Email</th>
+            <th>Phone number</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if tenants %}
             {% for tenant in tenants %}
-                <option value="{{ tenant.id }}">{{ tenant.tenant_name }} - Apt {{ tenant.unit_number }} ( {{ tenant.id }} )</option>
+                <tr>
+                    <td>{{ tenant.tenant_name }}</td>
+                    <td>{{ tenant.unit_number }}</td>
+                    <td>{{ tenant.role }}</td>
+                    <td>{{ tenant.email }}</td>
+                    <td>{{ tenant.phone_number }}</td>
+                    <td>Edit</td>
+                </tr>
             {% endfor %}
-        </select>
-        <button class="btn btn-primary" 
-                hx-get="{% url 'tenants_payment_filter' %}" 
-                hx-target="#transactionTable" 
-                hx-include="#tenantDropdown">
-            Filter
-        </button>
-    </div>
-
-    <!-- Table where transactions will be displayed -->
-    <div id="transactionTable">
-        {% include 'partials/tenant_payments.html' %}
-    </div>
-</div>
+        {% else %}
+            <tr>
+                <td colspan="3">No charges available</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
 
 {% endblock %}

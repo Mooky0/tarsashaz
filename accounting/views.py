@@ -33,6 +33,19 @@ def tenants(request):
     template = loader.get_template('accounting/tenants.html')
     tenants = Tenant.objects.all()
     
+    for tenant in tenants:
+        print(tenant.tenant_name + ' ' + tenant.role)
+    
+    context = {
+        'tenants' : tenants,
+    }
+    
+    return HttpResponse(template.render(context, request))
+    
+def charges(request):
+    template = loader.get_template('accounting/charges.html')
+    tenants = Tenant.objects.all()
+    
     context = {
         'tenants' : tenants,
     }
