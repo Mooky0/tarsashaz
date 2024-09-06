@@ -24,8 +24,6 @@ def index(request):
         'expense' : "{:,.2f}".format(expanses_total),
         'expenses' : expenses,
     }
-    for expense in expenses:
-        print(expense)
     return HttpResponse(template.render(context, request))
     
     
@@ -33,8 +31,6 @@ def tenants(request):
     template = loader.get_template('accounting/tenants.html')
     tenants = Tenant.objects.all()
     
-    for tenant in tenants:
-        print(tenant.tenant_name + ' ' + tenant.role)
     
     context = {
         'tenants' : tenants,
@@ -69,3 +65,6 @@ def about(request):
 
 def contact(request):    
     return HttpResponse('Contact page')
+
+def profile(request):
+    return HttpResponse('Profile page')

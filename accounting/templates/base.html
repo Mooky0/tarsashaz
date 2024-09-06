@@ -15,17 +15,21 @@
 </head>
 <body>
     <header class="sidebar-header">
-        <nav>
-            <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'charges' %}">Charges</a></li>
-                <li><a href="{% url 'tenants' %}">Tenants</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
-            </ul>
+        <nav class="d-flex flex-column h-100">
+          <ul class="list-unstyled flex-grow-1">
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'charges' %}">Charges</a></li>
+            <li><a href="{% url 'tenants' %}">Tenants</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'profile' %}">Profile</a></li>
+          </ul>
         </nav>
-    </header>
-    </header>
+      </header>
+      
+      
     
     <main>
         {% block content %}

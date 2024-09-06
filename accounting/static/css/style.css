@@ -9,37 +9,49 @@ footer {
 }
 
 .sidebar-header {
-    width: 200px; /* Adjust width as needed */
-    position: fixed; /* Keep it fixed on the left side */
-    top: 0;
-    left: 0;
-    height: 100%; /* Make it cover the full height of the page */
-    background-color: #f4f4f4; /* Background color of the sidebar */
-    padding: 10px; /* Padding around the content */
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional: Add a slight shadow */
-  }
-  
-  .sidebar-header nav ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar-header nav ul li {
-    margin-bottom: 10px; /* Spacing between items */
-  }
-  
-  .sidebar-header nav ul li a {
-    text-decoration: none; /* Remove underline from links */
-    color: #333; /* Text color */
-    display: block; /* Ensure each link takes the full width of the parent */
-    padding: 10px; /* Padding around the link text */
-    border-radius: 4px; /* Optional: Add rounded corners */
-  }
-  
-  .sidebar-header nav ul li a:hover {
-    background-color: #ddd; /* Background color on hover */
-  }
+  width: 200px; /* Adjust width as needed */
+  position: fixed; /* Keep it fixed on the left side */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Make it cover the full height of the viewport */
+  background-color: #f4f4f4; /* Background color of the sidebar */
+  padding: 10px; /* Padding around the content */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional: Add a slight shadow */
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-header nav ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-header nav ul.flex-grow-1 {
+  flex-grow: 1; /* This will take up all available vertical space */
+}
+
+.sidebar-header nav ul li {
+  margin-bottom: 10px; /* Spacing between items */
+}
+
+.sidebar-header nav ul li a {
+  text-decoration: none; /* Remove underline from links */
+  color: #333; /* Text color */
+  display: block; /* Ensure each link takes the full width of the parent */
+  padding: 10px; /* Padding around the link text */
+  border-radius: 4px; /* Optional: Add rounded corners */
+}
+
+.sidebar-header nav ul li a:hover {
+  background-color: #ddd; /* Background color on hover */
+}
 
 
 .transaction-item {
