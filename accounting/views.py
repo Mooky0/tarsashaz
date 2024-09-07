@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
+from django.contrib.auth.models import User
 from .models import Charge, Payment, Expense, Tenant
 from django.db.models import Sum
 
@@ -85,15 +86,41 @@ def my_charges(request):
     }
     
     return HttpResponse(template.render(context, request))
+   
+@login_required 
+def add_tenant(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index')) 
+
+    roles_raw = Tenant.Role.choices
+    roles = []
+    for role in roles_raw:
+        roles.append(role[1])
+        
+    context = {
+        'roles' : roles,
+    }
+    return render(request, 'accounting/add_tenant.html', context) 
+
+@login_required    
+def add_tenant_action(request):
+    if request.method != 'POST':
+        return HttpResponseRedirect(reverse('add_tenant'))
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
     
-def home(request):
-    return HttpResponse('Home page')
-
-def about(request):
-    return HttpResponse('About page')
-
-def contact(request):    
-    return HttpResponse('Contact page')
+    name = request.POST['name']
+    apt_number = request.POST['apartment']
+    email = request.POST['email']
+    phone_number = request.POST['phone']
+    role = request.POST['role']
+    user = User.objects.create_user(email, email, 'password') 
+    user.save()
+    tenant = Tenant(tenant_name = name, unit_number=apt_number, email=email, phone_number=phone_number, role=role)
+    tenant.save()
+    return HttpResponseRedirect(reverse('tenants'))
 
 def profile(request):
     return HttpResponse('Profile page')
