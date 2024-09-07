@@ -7,35 +7,37 @@
 
 <h1><b>Tenants</b></h1>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Apartment</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Phone number</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if tenants %}
-            {% for tenant in tenants %}
-                <tr>
-                    <td>{{ tenant.tenant_name }}</td>
-                    <td>{{ tenant.unit_number }}</td>
-                    <td>{{ tenant.role }}</td>
-                    <td>{{ tenant.email }}</td>
-                    <td>{{ tenant.phone_number }}</td>
-                    <td>Edit</td>
-                </tr>
-            {% endfor %}
-        {% else %}
+<div class="container mt-5">
+    <table class="table table-bordered">
+        <thead>
             <tr>
-                <td colspan="3">No charges available</td>
+                <th>Name</th>
+                <th>Apartment</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th></th>
             </tr>
-        {% endif %}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            {% if tenants %}
+                {% for tenant in tenants %}
+                    <tr>
+                        <td>{{ tenant.tenant_name }}</td>
+                        <td>{{ tenant.unit_number }}</td>
+                        <td>{{ tenant.role }}</td>
+                        <td>{{ tenant.email }}</td>
+                        <td>{{ tenant.phone_number }}</td>
+                        <td>Edit</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No charges available</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
