@@ -5,7 +5,6 @@
 
 {% block content %}
 
-
 <div class="container mt-5">
     <h1><b>Tenants</b></h1>
     <div class="d-flex justify-content-end mt-3 mb-3">
@@ -24,21 +23,21 @@
         </thead>
         <tbody>
             {% if tenants %}
-                {% for tenant in tenants %}
-                    <tr>
-                        <td>{{ tenant.tenant_name }}</td>
-                        <td>{{ tenant.unit_number }}</td>
-                        <td>{{ tenant.role }}</td>
-                        <td>{{ tenant.email }}</td>
-                        <td>{{ tenant.phone_number }}</td>
-                        <td>Edit</td>
-                        <td>Delete</td>
-                    </tr>
-                {% endfor %}
+            {% for tenant in tenants %}
+            <tr>
+                <td>{{ tenant.tenant_name }}</td>
+                <td>{{ tenant.unit_number }}</td>
+                <td>{{ tenant.role }}</td>
+                <td>{{ tenant.email }}</td>
+                <td>{{ tenant.phone_number }}</td>
+                <td><a href></a>Edit</td>
+                <td>Delete</td>
+            </tr>
+            {% endfor %}
             {% else %}
-                <tr>
-                    <td colspan="3">No charges available</td>
-                </tr>
+            <tr>
+                <td colspan="3">No charges available</td>
+            </tr>
             {% endif %}
         </tbody>
     </table>

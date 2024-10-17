@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <h1><b>My Profile</b></h1>
+
+    <!-- Name -->
+    {% include "partials/change_name.html" %}
+
+    <!-- Apartment Number -->
+    {% include "partials/change_apartment.html" %}
+
+    <!-- Email Address -->
+    {% include "partials/change_email.html" %}
+
+    <!-- Phone Number -->
+    {% include "partials/change_phone.html" %}
+
+</div>
+
+{% endblock %}

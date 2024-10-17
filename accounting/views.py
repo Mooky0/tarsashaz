@@ -100,6 +100,7 @@ def add_tenant(request):
         
     context = {
         'roles' : roles,
+        'tenant' : tenant,
     }
     return render(request, 'accounting/add_tenant.html', context) 
 
@@ -122,8 +123,54 @@ def add_tenant_action(request):
     tenant.save()
     return HttpResponseRedirect(reverse('tenants'))
 
+@login_required
 def profile(request):
-    return HttpResponse('Profile page')
+    tenant = Tenant.objects.get(email=request.user.email)
+    context = {
+        'tenant' : tenant,
+    }
+    return render(request, 'accounting/profile.html', context)
+
+@login_required
+def change_name(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    tenant.tenant_name = request.POST['name']
+    tenant.save()
+    return HttpResponse(render(request, 'partials/change_name.html', {'tenant': tenant}))
+
+@login_required
+def change_apartment(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    tenant.unit_number = request.POST['apartment']
+    tenant.save()
+    return HttpResponse(render(request, 'partials/change_apartment.html', {'tenant': tenant}))
+
+@login_required
+def change_phone(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    tenant.phone_number = request.POST['phone']
+    tenant.save()
+    return HttpResponse(render(request, 'partials/change_phone.html', {'tenant': tenant}))
+
+@login_required
+def change_email(request):
+    new_email = request.POST['email']
+    tenant = Tenant.objects.get(email=request.user.email)
+    tenant.email = new_email
+    tenant.save()
+    ## FIXME fix this, it should update the email in the User table
+    ## but it is not working. 
+    User.objects.filter(email=tenant.email).update(username=new_email)
+    User.objects.filter(email=tenant.email).update(email=new_email)
+    return HttpResponse(render(request, 'partials/change_email.html', {'tenant': tenant}))
+
+@login_required
+def delete_tenant(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    tenant.delete()
+    return HttpResponse(render(request, 'partials/tenant_table.html', {'tenant': tenant}))
 
 def login_view(request):
     if request.user.is_authenticated:

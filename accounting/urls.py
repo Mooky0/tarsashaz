@@ -14,4 +14,8 @@ urlpatterns = [
     path('my_charges/', views.my_charges, name='my_charges'),
     path('add_tenant/', views.add_tenant, name='add_tenant'),
     path('add_tenant_action/', views.add_tenant_action, name='add_tenant_action'),
+    path('change_name/', views.change_name, name='change_name'),
+    path('change_apartment/', views.change_apartment, name='change_apartment'),
+    path('change_phone/', views.change_phone, name='change_phone'),
+    path('change_email/', views.change_email, name='change_email'),
 ]

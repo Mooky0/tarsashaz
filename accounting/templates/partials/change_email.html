@@ -1,0 +1,10 @@
+<form hx-post="{% url 'change_email' %}" hx-swap="outerHTML">
+    {% csrf_token %}
+    <label for="email" class="form-label me-2">Email Address</label>
+    <div class="mb-3 d-flex align-items-center">
+        <input type="email" class="form-control me-2" id="email"
+            name="email" disabled
+            value="{{ tenant.email }}" required>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

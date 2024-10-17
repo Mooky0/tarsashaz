@@ -1,0 +1,9 @@
+<form hx-post="{% url 'change_phone' %}" hx-swap="outerHTML">
+    {% csrf_token %}
+    <label for="phone" class="form-label">Phone Number</label>
+    <div class="mb-3 d-flex align-items-center">
+        <input type="tel" class="form-control me-2" id="phone" name="phone"
+            value="{{ tenant.phone_number }}" required>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
