@@ -1,0 +1,20 @@
+<form
+    hx-post="{% url 'change_role_tenant' %}"
+    hx-swap="outerHTML">
+    {% csrf_token %}
+    <input type="hidden" name="tenant_id" value="{{ tenant.id }}">
+    <label for="name" class="form-label me-2">Role</label>
+    <div class="mb-3 d-flex align-items-center">
+        <select class="form-select" id="role" name="role" required>
+            <option value disabled selected>Select role</option>
+            {% for role in roles %}
+            {% if role == tenant.role %}
+            <option value="{{ role }}" selected>{{ role }}</option>
+            {% else %}
+            <option value="{{ role }}">{{ role }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

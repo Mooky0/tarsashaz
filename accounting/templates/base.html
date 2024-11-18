@@ -20,7 +20,7 @@
       <nav class="d-flex flex-column h-100">
         <ul class="list-unstyled flex-grow-1">
           <li><a href="{% url 'index' %}">Home</a></li>
-          {% if tenant.role == 'Property Manager' %}
+          {% if user.role == 'Property Manager' %}
           <li><a href="{% url 'charges' %}">Charges</a></li>
           <li><a href="{% url 'tenants' %}">Tenants</a></li>
           {% endif %}

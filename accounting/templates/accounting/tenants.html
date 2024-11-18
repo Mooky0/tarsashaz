@@ -30,8 +30,10 @@
                 <td>{{ tenant.role }}</td>
                 <td>{{ tenant.email }}</td>
                 <td>{{ tenant.phone_number }}</td>
-                <td><a href></a>Edit</td>
-                <td>Delete</td>
+                <td class="text-center"><a class="btn btn-secondary"
+                        href="{% url 'edit_tenant' tenant.id %}">Edit</a></td>
+                <td class="text-center"><a class="btn btn-danger"
+                        href="{% url 'delete_tenant' tenant.id %}">Delete</a></td>
             </tr>
             {% endfor %}
             {% else %}

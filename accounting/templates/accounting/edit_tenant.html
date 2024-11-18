@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Tenant{% endblock %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h1><b>Edit Tenant: {{ tenant.tenant_name }}</b></h1>
+
+    <!-- Name -->
+    {% include "partials/change_name_tenant.html" %}
+
+    <!-- Apartment Number -->
+    {% include "partials/change_apartment_tenant.html" %}
+
+    <!-- Email Address -->
+    {% include "partials/change_email.html" %}
+
+    <!-- Phone Number -->
+    {% include "partials/change_phone_tenant.html" %}
+
+    <!-- Role Dropdown -->
+    {% include "partials/change_role_tenant.html" %}
+
+</div>
+
+{% endblock %}

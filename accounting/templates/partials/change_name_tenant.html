@@ -1,0 +1,13 @@
+<form
+    hx-post="{% url 'change_name_tenant' %}"
+    hx-swap="outerHTML">
+    {% csrf_token %}
+    <input type="hidden" name="tenant_id" value="{{ tenant.id }}">
+    <label for="name" class="form-label me-2">Name</label>
+    <div class="mb-3 d-flex align-items-center">
+        <input type="text" class="form-control me-2" id="name"
+            name="name"
+            value="{{ tenant.tenant_name }}" required>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

@@ -1,6 +1,6 @@
 import django.template.loader as loader
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
@@ -27,7 +27,7 @@ def index(request):
         'income' : "{:,.2f}".format(payments),
         'expense' : "{:,.2f}".format(expanses_total),
         'expenses' : expenses,
-        'tenant' : Tenant.objects.get(email=str(request.user.email)),
+        'user' : Tenant.objects.get(email=str(request.user.email)),
     }
     return HttpResponse(template.render(context, request))
     
@@ -40,7 +40,7 @@ def tenants(request):
     
     context = {
         'tenants' : tenants,
-        'tenant' : Tenant.objects.get(email=str(request.user.email))
+        'user' : Tenant.objects.get(email=str(request.user.email))
     }
     
     return HttpResponse(template.render(context, request))
@@ -52,7 +52,7 @@ def charges(request):
     
     context = {
        'tenants' : tenants,
-        'tenant' : Tenant.objects.get(email=str(request.user.email)),
+        'user' : Tenant.objects.get(email=str(request.user.email)),
     }
     
     return HttpResponse(template.render(context, request))
@@ -82,7 +82,7 @@ def my_charges(request):
     
     context = {
         'charges' : charges,
-        'tenant' : Tenant.objects.get(email=str(user.email)),
+        'user' : Tenant.objects.get(email=str(user.email)),
     }
     
     return HttpResponse(template.render(context, request))
@@ -100,7 +100,7 @@ def add_tenant(request):
         
     context = {
         'roles' : roles,
-        'tenant' : tenant,
+        'user' : tenant,
     }
     return render(request, 'accounting/add_tenant.html', context) 
 
@@ -128,6 +128,7 @@ def profile(request):
     tenant = Tenant.objects.get(email=request.user.email)
     context = {
         'tenant' : tenant,
+        'user' : tenant,
     }
     return render(request, 'accounting/profile.html', context)
 
@@ -171,6 +172,88 @@ def delete_tenant(request):
         return HttpResponseRedirect(reverse('index'))
     tenant.delete()
     return HttpResponse(render(request, 'partials/tenant_table.html', {'tenant': tenant}))
+
+@login_required
+def edit_tenant(request, id):
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index')) 
+
+    edit_tenant = get_object_or_404(Tenant, pk=id)
+    roles_raw = Tenant.Role.choices
+    roles = []
+    for role in roles_raw:
+        roles.append(role[1])
+    context = {
+        'tenant' : edit_tenant,
+        'user' : tenant,
+        'roles' : roles,
+    }
+    return HttpResponse(render(request, 'accounting/edit_tenant.html', context))
+
+@login_required
+def delete_tenant(request, id):
+    logged_in_user = Tenant.objects.get(email=request.user.email)
+    if logged_in_user.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    
+    tenant = Tenant.objects.get(id=id)
+    tenant.delete()
+    return HttpResponseRedirect(reverse('tenants'))
+
+@login_required
+def change_apartment_tenant(request):
+    user = Tenant.objects.get(email=request.user.email)
+    if user.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    new_apt = request.POST['apartment']
+    tenant_id = request.POST['tenant_id']
+    print("Tenant ID: ", tenant_id, "New Apartment: ", new_apt)
+    tenant = Tenant.objects.get(id=tenant_id)
+    tenant.unit_number = new_apt
+    tenant.save()
+    return HttpResponse(render(request, 'partials/change_apartment_tenant.html', {'tenant': tenant, 'user': user}))
+    
+    
+@login_required
+def change_phone_tenant(request):
+    user = Tenant.objects.get(email=request.user.email)
+    if user.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    new_phone = request.POST['phone']
+    tenant_id = request.POST['tenant_id']
+    tenant = Tenant.objects.get(id=tenant_id)
+    tenant.phone_number = new_phone
+    tenant.save()
+    return HttpResponse(render(request, 'partials/change_phone_tenant.html', {'tenant': tenant, 'user': user}))
+
+@login_required
+def change_name_tenant(request):
+    user = Tenant.objects.get(email=request.user.email)
+    if user.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    new_name = request.POST['name']
+    tenant_id = request.POST['tenant_id']
+    tenant = Tenant.objects.get(id=tenant_id)
+    tenant.tenant_name = new_name
+    tenant.save()
+    return HttpResponse(render(request, 'partials/change_name_tenant.html', {'tenant': tenant, 'user': user}))
+
+@login_required
+def change_role_tenant(request):
+    user = Tenant.objects.get(email=request.user.email)
+    if user.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    new_role = request.POST['role']
+    tenant_id = request.POST['tenant_id']
+    tenant = Tenant.objects.get(id=tenant_id)
+    tenant.role = new_role
+    tenant.save()
+    roles_raw = Tenant.Role.choices
+    roles = []
+    for role in roles_raw:
+        roles.append(role[1])
+    return HttpResponse(render(request, 'partials/change_role_tenant.html', {'tenant': tenant, 'user': user, 'roles': roles}))
 
 def login_view(request):
     if request.user.is_authenticated:

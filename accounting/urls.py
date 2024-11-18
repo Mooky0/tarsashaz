@@ -18,4 +18,10 @@ urlpatterns = [
     path('change_apartment/', views.change_apartment, name='change_apartment'),
     path('change_phone/', views.change_phone, name='change_phone'),
     path('change_email/', views.change_email, name='change_email'),
+    path('edit_tenant/<int:id>', views.edit_tenant, name='edit_tenant'),
+    path('delete_tenant/<int:id>', views.delete_tenant, name='delete_tenant'),
+    path('change_apartment_tenant/', views.change_apartment_tenant, name='change_apartment_tenant'),
+    path('change_phone_tenant/', views.change_phone_tenant, name='change_phone_tenant'),
+    path('change_name_tenant/', views.change_name_tenant, name='change_name_tenant'),
+    path('change_role_tenant/', views.change_role_tenant, name='change_role_tenant'),
 ]
