@@ -44,6 +44,18 @@ class Payment(models.Model):
     def __str__(self):
         return f'Payment of {self.amount_paid} for {self.charge.tenant.tenant_name}'
 
+# Bank transactions for the account
+class Transaction(models.Model):
+    transaction_id = models.AutoField(primary_key=True)
+    hash = models.CharField(max_length=255)
+    type = models.CharField(max_length=100)
+    date = models.DateField()
+    amount = models.IntegerField()
+    bank_account = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    description = models.CharField(max_length=255)
+    bank_id = models.CharField(max_length=255)
+    
 
 class Expense(models.Model):
     expense_id = models.AutoField(primary_key=True)
