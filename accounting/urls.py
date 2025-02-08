@@ -24,4 +24,7 @@ urlpatterns = [
     path('change_phone_tenant/', views.change_phone_tenant, name='change_phone_tenant'),
     path('change_name_tenant/', views.change_name_tenant, name='change_name_tenant'),
     path('change_role_tenant/', views.change_role_tenant, name='change_role_tenant'),
+    path('import_transactions/', views.import_transactions, name='import_transactions'),
+    path('upload_transaction_history/', views.upload_transaction_history, name='upload_transaction_history'),
+    path('transactions/', views.transactions, name='transactions'),
 ]

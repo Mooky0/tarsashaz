@@ -6,8 +6,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
 from django.contrib.auth.models import User
-from .models import Charge, Payment, Expense, Tenant
+from .models import Charge, Payment, Expense, Tenant, Transaction
 from django.db.models import Sum
+
+import pandas as pd
+import os
+from datetime import datetime
+import hashlib
 
 @login_required
 def index(request):
@@ -254,6 +259,74 @@ def change_role_tenant(request):
     for role in roles_raw:
         roles.append(role[1])
     return HttpResponse(render(request, 'partials/change_role_tenant.html', {'tenant': tenant, 'user': user, 'roles': roles}))
+
+@login_required
+def import_transactions(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    context = {
+        'user' : Tenant.objects.get(email=str(request.user.email)),
+    }
+    return render(request, 'accounting/import_transactions.html', context)
+
+@login_required
+def upload_transaction_history(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+
+    print(request.FILES)
+
+    if 'docfile' not in request.FILES:
+        return HttpResponse("No file uploaded", status=400)
+
+    transaction_file = request.FILES['docfile']
+    file_path = "/tmp/files/transaction_history_{}.html".format(str(datetime.now))  # Ensure correct extension
+    print(transaction_file.content_type) 
+
+    # Save the uploaded file
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    with open(file_path, 'wb+') as destination:
+        for chunk in transaction_file.chunks():
+            destination.write(chunk)
+
+    # Read the saved file using pandas
+    try:
+        df = pd.read_html(file_path)
+        df = df[2].reset_index()
+        for index, row in df.iterrows():
+            hashed = hashlib.sha256(str(row).encode()).hexdigest()
+            if Transaction.objects.filter(hash=hashed).exists():
+                continue
+            date = datetime.strptime(row['Tranzakció időpontja'], '%Y.%m.%d. %H:%M:%S')
+            transaction = Transaction(
+                hash=hashed,
+                type=row['Forgalom típusa'],
+                date=date,
+                amount=row['Összeg'],
+                bank_account=row['Ellenoldali számlaszám'],
+                name=row['Ellenoldali név'],
+                description=row['Közlemény'],
+                bank_id=row['Banki tranzakció azonosító']
+            )
+            transaction.save()
+    except Exception as e:
+        return HttpResponse(f"Error reading Excel file: {str(e)}", status=400)
+
+    return HttpResponseRedirect(reverse('index'))
+
+def transactions(request):
+    tenant = Tenant.objects.get(email=request.user.email)
+    if tenant.role != 'Property Manager':
+        return HttpResponseRedirect(reverse('index'))
+    transactions = Transaction.objects.all()
+    context = {
+        'transactions' : transactions,
+        'transaction_cnt': len(transactions), 
+        'user' : Tenant.objects.get(email=str(request.user.email)),
+    }
+    return render(request, 'accounting/transactions.html', context)
 
 def login_view(request):
     if request.user.is_authenticated:

@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% load static %} {% block title %}{{ section.title
+}}{% endblock %} {% block content %}
+
+<div class="container mt-5">
+  <h1><b>Transactions ({{ transaction_cnt}})</b></h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Forgalom típusa</th>
+        <th>Tranzakció időpontja</th>
+        <th>Összeg</th>
+        <th>Ellenoldali számlaszám</th>
+        <th>Ellenoldali név</th>
+        <th>Közlemény</th>
+        <th>Banki tranzakció azonosító</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if transactions %} {% for transaction in transactions %}
+      <tr>
+        <td>{{ transaction.type }}</td>
+        <td>{{ transaction.date }}</td>
+        <td>{{ transaction.amount }}</td>
+        <td>{{ transaction.bank_account }}</td>
+        <td>{{ transaction.name }}</td>
+        <td>{{ transaction.description }}</td>
+        <td>{{ transaction.bank_id }}</td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="3">No transaction available</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
