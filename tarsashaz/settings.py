@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a**q*=e=ejpx5+ky&jni%h!ss_8t09%b$g0$cykm&jod)=*b(r'
+SECRET_KEY = os.environ.get("SECRET_KEY",
+                            default="uoly6nkAsB9hdQ9TcBoyu36DsPQZwJmVQeFSNR1kPzkyygvWxCCMYb3tF6luaLlzjkLxbz8oeFzudR8n1TSECJ74Vt30MTwC")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS","127.0.0.1,localhost").split(",")
+
+CSRF_COOKIE_SECURE= os.environ.get("CSRF_COOKIE_SECURE", default=False)
+SECURE_HSTS_SECONDS = os.environ.get("SECURE_HSTS_SECONDS", default=0)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = os.environ.get("SECURE_HSTS_INCLUDE_SUBDOMAINS", default=False)
+SECURE_HSTS_PRELOAD = os.environ.get("SECURE_HSTS_PRELOAD", default=False)
+SECURE_SSL_REDIRECT = os.environ.get("SECURE_SSL_REDIRECT", default=False)
+SESSION_COOKIE_SECURE = os.environ.get("SESSION_COOKIE_SECURE", default=False)
+SECURE_PROXY_SSL_HEADER = os.environ.get("SECURE_PROXY_SSL_HEADER", default=('HTTP_X_FORWARDED_PROTO', 'http'))
+APPEND_SLASH = os.environ.get("APPEND_SLASH", default=True)
+
 
 
 # Application definition
@@ -49,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tarsashaz.urls'
@@ -75,10 +91,12 @@ WSGI_APPLICATION = 'tarsashaz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+DB_PATH = os.environ.get("DB_PATH", default=str(BASE_DIR))
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DB_PATH + '/db.sqlite3',
     }
 }
 
@@ -118,6 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = "/var/static/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

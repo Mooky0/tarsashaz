@@ -282,7 +282,7 @@ def upload_transaction_history(request):
         return HttpResponse("No file uploaded", status=400)
 
     transaction_file = request.FILES['docfile']
-    file_path = "/tmp/files/transaction_history_{}.html".format(str(datetime.now))  # Ensure correct extension
+    file_path = "/files/transaction_history_{}.html".format(str(datetime.now))  # Ensure correct extension
     print(transaction_file.content_type) 
 
     # Save the uploaded file

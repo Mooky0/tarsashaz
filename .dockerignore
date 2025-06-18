@@ -1,0 +1,10 @@
+# .dockerignore
+data
+data/
+data_fix.py
+*/__pycache__/*
+.gitignore
+venv
+venv/
+.env
+*.pyc
